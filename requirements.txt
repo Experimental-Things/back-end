@@ -1,0 +1,8 @@
+Modules and Basic flow
+ - User management 
+    - SignIn/SignUp
+ - Post
+    - Create
+    - Update
+    - View 
+    - Delete

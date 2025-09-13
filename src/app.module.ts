@@ -7,6 +7,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './libs/config/database/database.module';
 
+// servie modules
+import { WrapperModule } from '@/libs/services/wrapper/wrapper.module'
+// feature modules
+import { UserModule } from '@/modules/user/user.module'
+
+
 @Module({
   imports: [
     // setup config module
@@ -14,7 +20,6 @@ import { DatabaseModule } from './libs/config/database/database.module';
       isGlobal: true,
       envFilePath: path.join(__dirname, '..', `.env.${process.env.ENVIRONMENT}`)
     }),
-    
     // setup mongoose
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -23,9 +28,14 @@ import { DatabaseModule } from './libs/config/database/database.module';
         uri: `${configService.get<string>('DATABASE_URL')}/${configService.get<string>('DB_NAME')}`
       })
     }),
-
     // load Dasbase module
-    DatabaseModule
+    DatabaseModule,
+
+    // service modules
+    WrapperModule,
+
+    // ********************* feature modules
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
