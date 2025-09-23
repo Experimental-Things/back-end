@@ -21,6 +21,9 @@ export class Users extends Document {
 
     @Prop({ required: true })
     password: string
+
+    @Prop({ default: true })
+    is_active: boolean
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users)
