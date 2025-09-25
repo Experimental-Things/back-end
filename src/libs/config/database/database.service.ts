@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose'
+import { Model, RootFilterQuery } from 'mongoose'
 
 // Schema and Model
 import * as ModelCalss from './schema/index'
@@ -27,11 +27,23 @@ export class DatabaseService {
     async create<T>(model: Model<T>, data: Partial<T>): Promise<Record<string, any>> {
        return new Promise(async (resolve: (value: Record<string, unknown> | any) => void, reject: (error: Error | any) => void) => {
         try{
-            const response = (await model.create(data)).toObject()
-            resolve(response)
+            const resData = (await model.create(data)).toObject()
+            resolve(resData)
         }catch(error){
             reject(error)
         }
        })
     }
+
+    async findOne<T>(model: Model<T>, filterObj: Partial<RootFilterQuery<T>>): Promise<Record<string, any>> {
+        return new Promise(async (resolve: (value: Record<string, any> | any) => void, reject: (error: Error | Record<string, any>) => void) => {
+            try{
+                const resData = (await model.findOne(filterObj))?.toObject()
+                resolve(resData)
+            }catch(error){
+                reject(error)
+            }
+        })
+    }
+
 }

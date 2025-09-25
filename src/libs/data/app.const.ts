@@ -1,16 +1,20 @@
 export const APP_CONST = Object.freeze({
     ENV: {
-        DEFAULT_SERVER_PORT: 2121
+        DEFAULT_SERVER_PORT: 2121,
+        HASH_SALT_VALUE: 8
     },
     MODULES: {
-        USER: 'user'
+        USER: 'user',
+        AUTH: 'auth'
     },
     PATH: {
         USER: {
             CREATE: 'create',
-            LOGIN: 'login',
-            LOGOUT: 'logout'
             
+        },
+        AUTH: {
+            LOGIN: 'login',
+            LOGOUT: 'logout',
         }
     }
 })
