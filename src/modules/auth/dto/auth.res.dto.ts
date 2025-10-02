@@ -1,2 +1,2 @@
 import { Exclude, Expose } from 'class-transformer'
-export class LoginDto {}
+export class LoginResDto {}

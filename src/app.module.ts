@@ -9,6 +9,7 @@ import { DatabaseModule } from './libs/config/database/database.module';
 
 // servie modules
 import { WrapperModule } from '@/libs/services/wrapper/wrapper.module'
+import { GeneralUtilService } from '@/libs/utils/service/general.util'
 // feature modules
 import { UserModule } from '@/modules/user/user.module'
 
@@ -38,6 +39,12 @@ import { UserModule } from '@/modules/user/user.module'
     UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    GeneralUtilService
+  ],
+  exports: [
+    GeneralUtilService
+  ]
 })
 export class AppModule {}

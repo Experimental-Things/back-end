@@ -18,7 +18,14 @@ export class WrapperService {
     async Service<T>(response:Response, serviceInstance: T, method: Function, ...methodArgs: any[] ){
         try{
             const responseData = await method.bind(serviceInstance)(...methodArgs)
-            return this.responseService.success(response, responseData)
+            
+            return this.responseService.success(
+                response, 
+                responseData?.["data"],
+                responseData?.["code"],
+                responseData?.["status"],
+                responseData?.["message"]
+            )
         }catch(error: any) {
             throw new HttpException({ message: error.message, error: JSON.stringify(error) }, HttpStatus.INTERNAL_SERVER_ERROR)
         }

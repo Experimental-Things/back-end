@@ -1,4 +1,4 @@
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule} from '@nestjs/swagger'
 
 import { IServerOptions } from '@/libs/types/server'
@@ -15,6 +15,14 @@ export default class Server {
     async init(){
         const PORT = this.options.port ?? APP_CONST?.ENV?.DEFAULT_SERVER_PORT
 
+        // Enable global Pipe for Dto validations
+        this.App.useGlobalPipes(
+            new ValidationPipe({
+                whitelist: true,
+                forbidNonWhitelisted: true,
+                transform: true
+            })
+        )
         // Swagger API docs
         const swaggerConfig: any = new DocumentBuilder().setTitle("API Docs").setDescription("API Docs").setVersion("1.0.0")
         const document = SwaggerModule.createDocument(this.App, swaggerConfig)

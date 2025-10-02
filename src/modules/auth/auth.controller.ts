@@ -5,6 +5,8 @@ import { type Response } from 'express';
 import { APP_CONST } from '@/libs/data/app.const'
 import { WrapperService } from '@/libs/services/wrapper/wrapper.service';
 
+import {LoginReqDto} from './dto/auth.req.dto';
+
 @Controller(APP_CONST.MODULES.AUTH)
 export class AuthController {
   constructor(
@@ -13,7 +15,7 @@ export class AuthController {
   ) {}
 
   @Post(APP_CONST.PATH.AUTH.LOGIN)
-  login(@Body() body, @Res() res: Response){
+  login(@Body() body: LoginReqDto, @Res() res: Response){
     return this.ws.Service<AuthService>(res, this.authService, this.authService.login, body)
   }
 
