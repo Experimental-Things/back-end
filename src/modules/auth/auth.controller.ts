@@ -2,7 +2,7 @@ import { Body, Controller, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { type Response } from 'express';
 
-import { APP_CONST } from '@/libs/data/app.const'
+import { APP_CONST } from '@/libs/data'
 import { WrapperService } from '@/libs/services/wrapper/wrapper.service';
 
 import {LoginReqDto} from './dto/auth.req.dto';

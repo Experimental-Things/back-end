@@ -6,4 +6,6 @@ export class CommonResDto {
   message: string;
   @Expose()
   status: boolean;
+  @Expose()
+  statusCode: number;
 }

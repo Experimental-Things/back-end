@@ -16,5 +16,12 @@ export const APP_CONST = Object.freeze({
             LOGIN: 'login',
             LOGOUT: 'logout',
         }
+    },
+    BASE_RESPONSE: {
+        code: 200,
+        statusCode: 200,
+        message: "success",
+        status: true,
+        data: {}
     }
 })

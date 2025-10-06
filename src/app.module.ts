@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, Global } from '@nestjs/common';
 import { ConfigService, ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose'
 import * as path from 'node:path'
@@ -12,8 +12,10 @@ import { WrapperModule } from '@/libs/services/wrapper/wrapper.module'
 import { GeneralUtilService } from '@/libs/utils/service/general.util'
 // feature modules
 import { UserModule } from '@/modules/user/user.module'
+import { AuthModule } from './modules/auth/auth.module';
 
 
+@Global()
 @Module({
   imports: [
     // setup config module
@@ -37,6 +39,7 @@ import { UserModule } from '@/modules/user/user.module'
 
     // ********************* feature modules
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [

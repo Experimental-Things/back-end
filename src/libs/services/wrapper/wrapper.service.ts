@@ -24,7 +24,8 @@ export class WrapperService {
                 responseData?.["data"],
                 responseData?.["code"],
                 responseData?.["status"],
-                responseData?.["message"]
+                responseData?.["message"],
+                (responseData?.["statusCode"] ?? HttpStatus.OK)
             )
         }catch(error: any) {
             throw new HttpException({ message: error.message, error: JSON.stringify(error) }, HttpStatus.INTERNAL_SERVER_ERROR)

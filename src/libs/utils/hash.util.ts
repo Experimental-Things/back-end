@@ -1,9 +1,9 @@
 import * as bcrypt from 'bcrypt';
-import { APP_CONST } from '../data/app.const';
+import { APP_MESSAGES, APP_CONST} from '@/libs/data'
 
 export async function HashValue(data: string): Promise<string> {
   if (data === null || data === undefined) {
-    throw new Error('Data to be hashed cannot be null or undefined');
+    throw new Error(APP_MESSAGES?.UTILS?.HASH_FN?.EMPTY_VALUE);
   }
   const SALT_VALUE = Number(
     process.env.HASH_SALT_VALUE || APP_CONST.ENV.HASH_SALT_VALUE,
@@ -14,7 +14,7 @@ export async function HashValue(data: string): Promise<string> {
 
 export async function CompareHash(data: string, hashedData: string): Promise<boolean> {
   if (data === null || data === undefined) {
-    throw new Error('Data to be compared cannot be null or undefined');
+    throw new Error(APP_MESSAGES?.UTILS?.HASH_FN?.EMPTY_VALUE);
   } 
   return await bcrypt.compare(data, hashedData);
 }

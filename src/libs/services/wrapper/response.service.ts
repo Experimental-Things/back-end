@@ -1,5 +1,6 @@
 import { Injectable, Res, HttpException, HttpStatus } from '@nestjs/common';
 import { Response } from 'express';
+import { APP_MESSAGES } from '../../data/app.messages'
 
 type ResponseData =
   | Record<string, any>
@@ -37,7 +38,7 @@ export class ResponseService {
   ): Response {
     return response.status(statusCode).json({
       code: code || statusCode,
-      message: message || 'failed',
+      message: message || APP_MESSAGES?.GENERAL_MESSAGE?.FAILED ,
       data,
       status,
     });
@@ -56,7 +57,7 @@ export class ResponseService {
    */
   success(
     response: Response,
-    data: ResponseData = {},
+    data: ResponseData | null = {},
     code: number | null = null,
     status: boolean = true,
     message: string,
@@ -64,7 +65,7 @@ export class ResponseService {
   ): Response {
     return response.status(statusCode).json({
       code: code || statusCode,
-      message: message || 'success',
+      message: message || APP_MESSAGES?.GENERAL_MESSAGE?.SUCCESS ,
       data: data,
       status,
     });

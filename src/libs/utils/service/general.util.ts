@@ -1,6 +1,5 @@
 import {Global, Injectable } from '@nestjs/common'
 
-@Global()
 @Injectable()
 export class GeneralUtilService {
     isEmpty(data: any): boolean {
