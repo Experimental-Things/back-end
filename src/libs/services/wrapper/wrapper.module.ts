@@ -5,6 +5,6 @@ import { ResponseService } from './response.service';
 @Global()
 @Module({
   providers: [WrapperService, ResponseService],
-  exports: [WrapperService, ResponseService]
+  exports: [WrapperService, ResponseService],
 })
 export class WrapperModule {}

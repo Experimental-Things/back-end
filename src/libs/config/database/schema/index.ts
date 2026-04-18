@@ -1,17 +1,14 @@
-import { Model } from "mongoose"
-import { UsersSchema, Users } from "./user.schema"
+import { Model } from 'mongoose';
+import { UsersSchema, Users } from './user.schema';
 export const COLLECTION_SCHEME = [
-    {
-        name: Users.name,
-        schema: UsersSchema
-    }
-]
+  {
+    name: Users.name,
+    schema: UsersSchema,
+  },
+];
 
 export interface IModelClass {
-    Users: Model<Users>
+  Users: Model<Users>;
 }
 
-export {
-    Users
-}
-
+export { Users };

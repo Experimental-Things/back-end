@@ -5,7 +5,13 @@ class LoginData {
     first_name: string;
 
     @Expose()
-    last_name: string
+    last_name: string;
+
+    @Expose()
+    email: string;
+
+    @Expose()
+    access_token: string
 }
 
 export class LoginResDto extends CommonResDto {
